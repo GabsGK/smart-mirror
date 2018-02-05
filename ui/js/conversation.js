@@ -17,10 +17,10 @@ var Conversation = (function() {
   'use strict';
   var ids = {
     userInput: 'user-input',
-    userInputDummy: 'user-input-dummy',
+    //userInputDummy: 'user-input-dummy',
     mirrorMessage: 'mirror-message',
     chatFlow: 'chat-flow',
-    chatScrollWrapper: 'chat-scroll-wrapper'
+    chatScrollWrapper: 'chat-scroll-wrapper',
   };
   var classes = {
     messageWrapper: 'message-wrapper',
@@ -37,6 +37,7 @@ var Conversation = (function() {
     init: init,
     setMessage: setMessage,
     sendMessage: sendMessage,
+    //setInstructions: setInstructions
     //focusInput: focusInput
   };
 
@@ -45,7 +46,7 @@ var Conversation = (function() {
     chatSetup();
     initEnterSubmit();
     setupInputBox();
-    
+    //setInstructions();
     Api.initConversation(); // Load initial Watson greeting after overlays are gone.
   }
 
@@ -83,14 +84,14 @@ var Conversation = (function() {
   // This value is then used to set the new width of the visible input box.
   function setupInputBox() {
     var input = document.getElementById(ids.userInput);
-    var dummy = document.getElementById(ids.userInputDummy);
+    //var dummy = document.getElementById(ids.userInputDummy);
     var minFontSize = 9;
     var maxFontSize = 16;
     var minPadding = 5;
     var maxPadding = 9;
 
     // If no dummy input box exists, create one
-    if (dummy === null) {
+    /* if (dummy === null) {
       var dummyJson = {
         'tagName': 'div',
         'attributes': [{
@@ -101,15 +102,15 @@ var Conversation = (function() {
 
       dummy = Common.buildDomElement(dummyJson);
       document.body.appendChild(dummy);
-    }
+    } */
 
     function adjustInput() {
       if (input.value === '') {
         // If the input box is empty, remove the underline
-        Common.removeClass(input, 'underline');
+        //Common.removeClass(input, 'underline');
         input.setAttribute('style', 'width:' + '100%');
         input.style.width = '100%';
-      } else {
+      } /* else {
         // otherwise, adjust the dummy text to match, and then set the width of
         // the visible input box to match it (thus extending the underline)
         Common.addClass(input, classes.underline);
@@ -133,7 +134,7 @@ var Conversation = (function() {
         var widthValue = ( dummy.offsetWidth + padding) + 'px';
         input.setAttribute('style', 'width:' + widthValue);
         input.style.width = widthValue;
-      }
+      } */
     }
 
     // Any time the input changes, or the window resizes, adjust the size of the input box
@@ -143,6 +144,11 @@ var Conversation = (function() {
     // Trigger the input event once to set up the input box and dummy element
     Common.fireEvent(input, 'input');
   }
+
+  // Set instructions message
+  /* function setInstructions(){
+    document.getElementById(ids.mirrorMessage).innerHTML = '<p class="watson-message pre-bar">Put on the headset and say, hello magic mirror!</p>';
+  } */
 
   // Retrieve the value of the input box
   function getMessage() {

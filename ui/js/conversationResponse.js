@@ -55,6 +55,7 @@ var ConversationResponse = (function () {
         console.log(action);
         if (action === 'start-interaction') {
           Matsi.showVideoBg();
+          document.getElementById('instructions').setAttribute('class','hide');
         }
         if (action === 'blank') {
           //Matsi.hideVideoBackground();

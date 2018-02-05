@@ -16,11 +16,20 @@ video {
     right: 0%;
 }
 #pic-response{
-    width: 320px;
+    /* width: 320px;
     color: #fff;
     text-align: center;
     margin: 202px 1.875rem;
     position: relative;
     bottom: 0;
+    line-height: 40px; */
+
+    width: 320px;
+    color: #fff;
+    text-align: right;
+    margin: 220px 1.875rem;
+    position: relative;
+    bottom: 0;
     line-height: 40px;
+    padding: 20px;
 }

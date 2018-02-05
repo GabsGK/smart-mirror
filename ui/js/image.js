@@ -21,7 +21,8 @@ var ImageModule = (function () {
     return {
         startup: startup,
         takepicture: takepicture,
-        clearPicture: clearPicture
+        clearPicture: clearPicture,
+        isUserThere: isUserThere
     }
 
     function startup() {
@@ -79,11 +80,11 @@ var ImageModule = (function () {
             var data = canvas.toDataURL('image/png');
             console.log(print)
             //Post image to server with XHR.
-            postImage(data,print);
+            postImage(data, print);
         }
     }
 
-    function postImage(data,print) {
+    function postImage(data, print) {
         var xhr = new XMLHttpRequest(),
             postdata = {
                 image: data
@@ -96,28 +97,7 @@ var ImageModule = (function () {
         xhr.onload = function () {
             if (xhr.status === 200 && xhr.responseText) {
                 var response = JSON.parse(xhr.responseText);
-                var picResponse = document.getElementById('pic-response');
-                if (response.images[0].faces.length != 0) {
-                    var div = document.createElement('div');
-                    var length = response.images[0].faces.length;
-                    if (length != 0) {
-                        if (print === true) {
-                            console.log(response.images[0].faces)
-                            for (i = 0; i < length; i++) {
-                                var gender = document.createElement('p');
-                                var age = document.createElement('p');
-                                gender.innerText = response.images[0].faces[i].gender.gender.toLowerCase();
-                                age.innerText = 'between ' + response.images[0].faces[i].age.min + ' and ' + response.images[0].faces[i].age.max + ' years';
-                                div.appendChild(gender);
-                                div.appendChild(age);
-                            }
-                            picResponse.innerHTML = div.innerHTML;
-                        } else if (print === false) {
-                            console.log('yes');
-                            return 'yes';
-                        }
-                    }                 
-                }
+                isUserThere(response, print);
             }
             else if (xhr.status !== 200) {
                 alert('Request failed.  Returned status of ' + xhr.status);
@@ -130,6 +110,45 @@ var ImageModule = (function () {
         var canvas = document.getElementById('canvas');
         var context = canvas.getContext('2d');
         context.clearRect(0, 0, width, height);
+    }
+
+    function isUserThere(response, print) {
+        console.log(response)
+        var length = response.images[0].faces.length;
+        if (length != 0) {
+            if (print === true) {
+                var picResponse = document.getElementById('pic-response');
+                var div = document.createElement('div');
+                for (i = 0; i < length; i++) {
+                    var info = document.createElement('div'),
+                        gender = '',
+                        age = '',
+                        minAge = '',
+                        maxAge = '',
+                        str = '';
+                        
+                    if(response.images[0].faces[i].gender.score > 0.3) {
+                        gender = response.images[0].faces[i].gender.gender;
+                    } else {
+                        gender = 'PERSON'
+                    }
+                    if(response.images[0].faces[i].age.score > 0.3) {
+                        if (response.images[0].faces[i].age.min)
+                            minAge = response.images[0].faces[i].age.min + ' - ';
+                        if (response.images[0].faces[i].age.max)
+                            maxAge = response.images[0].faces[i].age.max;
+                        age = minAge + maxAge + ' years old.'
+                    }      
+                    str = 'I spy a ' + gender + '. ' + age ;
+                    info.innerText = str.toUpperCase();
+                    div.appendChild(info);
+                }
+                picResponse.innerHTML = div.innerHTML;
+            } else if (print === false) {
+                Api.postConversationMessage('Do you like me?');
+            }
+        } else if (print === false)
+            window.location.reload(true);
     }
 
     // Set up our event listener to run the startup process

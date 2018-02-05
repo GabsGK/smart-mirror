@@ -3,6 +3,17 @@
  *
 */
 
+#instructions {
+    color: #ccc;
+    text-align: center;
+    margin-top: 50%;
+    z-index: 1;
+}
+
+#chat-wrapper {
+    z-index: 3;
+}
+
 #mirror-message {
     width: 50%;
     position: fixed;
