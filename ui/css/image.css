@@ -1,0 +1,26 @@
+video {
+    margin: 0 auto;
+    display: block;
+}
+#camera-wrapper {
+    z-index: 2;
+    float: right;
+    clear: both;
+    position: relative;
+}
+#canvas, #video {
+    width: 320px;
+    margin: 0 1.875rem;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+}
+#pic-response{
+    width: 320px;
+    color: #fff;
+    text-align: center;
+    margin: 202px 1.875rem;
+    position: relative;
+    bottom: 0;
+    line-height: 40px;
+}

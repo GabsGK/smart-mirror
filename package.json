@@ -1,0 +1,50 @@
+{
+  "name": "matsi",
+  "version": "2.5.0",
+  "description": "Chat bot with Watson Conversation, TTS, STT, APIs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "postinstall": "npm run build",
+    "build": "gulp build-html",
+    "watch": "gulp server:watch"
+  },
+  "keywords": [
+    "chat",
+    "bot",
+    "watson",
+    "conversation",
+    "api",
+    "AI"
+  ],
+  "author": "Wabs",
+  "license": "ISC",
+  "dependencies": {
+    "base64-stream": "^0.1.3",
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-fileupload": "^0.3.0",
+    "express-rate-limit": "^2.11.0",
+    "express-secure-only": "^0.2.1",
+    "express-status-monitor": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-develop-server": "^0.5.2",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.3",
+    "gulp-useref": "^3.1.4",
+    "helmet": "^3.9.0",
+    "into-stream": "^3.1.0",
+    "path": "^0.12.7",
+    "security": "^1.0.0",
+    "vcap_services": "^0.3.4",
+    "watson-developer-cloud": "^3.0.3",
+    "whatwg-fetch": "^2.0.3"
+  },
+  "devDependencies": {
+    "prompt-sync": "^4.1.5"
+  }
+}

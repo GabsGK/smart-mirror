@@ -1,0 +1,31 @@
+
+/*
+ * Copyright © 2018. All rights reserved.
+ *
+*/
+
+
+#bg-video, .bg-video {
+    width: 100%; 
+    height: auto;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    /* left: 15%;
+    right: 15%; */
+}
+@media screen and (orientation: landscape) {
+    #bg-video, .bg-video {
+        width: 50%; 
+        left: 15%;
+        right: 15%;
+    }
+    #spirit-container.bg-video {
+        width: 100%;
+    }
+}
+#rings-container,
+#spirit-container {
+    /* position: relative; */
+    z-index: 1;
+}
