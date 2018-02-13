@@ -211,6 +211,7 @@ body {
 }
 
 .pre-bar::before {
+    /* border-left: solid 0.25rem rgba(255,64,25,1); */
     border-left: solid 0.25rem rgba(255,64,25,1);
     border-radius: 0.25rem;
     content: "";
@@ -226,4 +227,11 @@ body {
     100% {
         fill: green;
     }
+}
+
+.index-1 {
+    z-index: 1;
+}
+.index-2 {
+    z-index: 2;
 }

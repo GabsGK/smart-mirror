@@ -51,6 +51,30 @@ var ConversationResponse = (function () {
         return;
       }
 
+      /* if (action) {
+        if (action === 'start-interaction') {
+          Matsi.showVideoBg();
+        }
+        if (action === 'blank') {
+          Matsi.hideVideoBackground();
+          ImageModule.clearPicture();
+          CameraModule.hideCamera();
+          CameraModule.clearCameraText();
+          cont = 0;
+        }
+        if (action === 'info-node') {
+          CameraModule.showCamera();
+          setTimeout(function () {
+            if (cont === 0) {
+              cont++;
+              return ImageModule.takepicture();
+            }
+          }, 7000);
+        }
+        if (action === 'secret-frase') {
+          Matsi.showSpirit();
+        }
+      } */
       if (action) {
         console.log(action);
         if (action === 'start-interaction') {

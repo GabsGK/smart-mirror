@@ -13,22 +13,18 @@
     left: 0%;
     /* left: 15%;
     right: 15%; */
-    z-index: 2;
+    z-index: 1;
 }
 
 #rings-container,
 #spirit-container {
     /* position: relative; */
-    z-index: 2;
 }
 
 @media screen and (orientation: landscape) {
     #bg-video, .bg-video {
-        width: 50%; 
+        width: 70%; 
         left: 15%;
         right: 15%;
-    }
-    #spirit-container.bg-video {
-        width: 100%;
     }
 }

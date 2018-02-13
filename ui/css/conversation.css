@@ -3,17 +3,6 @@
  *
 */
 
-#instructions {
-    color: #ccc;
-    text-align: center;
-    margin-top: 50%;
-    z-index: 1;
-}
-
-#chat-wrapper {
-    z-index: 3;
-}
-
 #mirror-message {
     width: 50%;
     position: fixed;
@@ -29,6 +18,7 @@
     width: 50%;
     float: right;
     clear: both;
+    z-index: 3;
 }
 
 #input-mic {
@@ -173,5 +163,12 @@ input#user-input:-moz-placeholder {
 }
 
 .watson .pre-bar::before {
-    border-left-color: white;
+    border-left-color: rgba(255,64,25,1);
+}
+
+#instructions {
+    color: #ccc;
+    text-align: center;
+    margin-top: 50%;
+    z-index: 1;
 }

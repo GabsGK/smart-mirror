@@ -21,8 +21,7 @@ var ImageModule = (function () {
     return {
         startup: startup,
         takepicture: takepicture,
-        clearPicture: clearPicture,
-        isUserThere: isUserThere
+        clearPicture: clearPicture
     }
 
     function startup() {
@@ -78,11 +77,52 @@ var ImageModule = (function () {
             context.drawImage(video, 0, 0, width, height);
 
             var data = canvas.toDataURL('image/png');
-            console.log(print)
+
             //Post image to server with XHR.
-            postImage(data, print);
+            postImage(data,true);
         }
     }
+
+    /* function postImage(data) {
+        var xhr = new XMLHttpRequest(),
+            postdata = {
+                image: data
+            };
+
+        //Post image to server
+
+        xhr.open('POST', '/image');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.onload = function () {
+            if (xhr.status === 200 && xhr.responseText) {
+                var response = JSON.parse(xhr.responseText);
+                var picResponse = document.getElementById('pic-response');
+                if (response.images[0].faces.length != 0) {
+                    var div = document.createElement('div');
+                    var length = response.images[0].faces.length;
+                    for (i = 0; i < length; i++) {
+                        var gender = document.createElement('p');
+                        var age = document.createElement('p');
+                        gender.innerText = response.images[0].faces[i].gender.gender.toLowerCase();
+                        age.innerText = 'between ' + response.images[0].faces[i].age.min + ' and ' + response.images[0].faces[i].age.max + ' years';
+                        div.appendChild(gender);
+                        div.appendChild(age);
+                    }
+                    picResponse.innerHTML = div.innerHTML;
+                }
+            }
+            else if (xhr.status !== 200) {
+                alert('Request failed.  Returned status of ' + xhr.status);
+            }
+        };
+        xhr.send(JSON.stringify(postdata));
+    } 
+
+    function clearPicture() {
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        context.clearRect(0, 0, width, height);
+    } */
 
     function postImage(data, print) {
         var xhr = new XMLHttpRequest(),
@@ -117,6 +157,7 @@ var ImageModule = (function () {
         var length = response.images[0].faces.length;
         if (length != 0) {
             if (print === true) {
+                console.log('hola')
                 var picResponse = document.getElementById('pic-response');
                 var div = document.createElement('div');
                 for (i = 0; i < length; i++) {

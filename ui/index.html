@@ -21,10 +21,7 @@
 
 <body>
     <div class="big-wrapper">
-        <div id="instructions" class="block-wrapper">
-            <p>Put on the headset and say, hello magic mirror!</p>
-        </div>
-        <div id="video-bg" class="hide">
+        <div id="video-bg" class="hide index-1">
             <!-- The videos -->
             <div id="rings-container" class="hide">
                 <!-- <div id="rings-container" class=""> -->
@@ -43,7 +40,7 @@
                 </video>
             </div>
         </div>
-        <div id="chat-wrapper" class="block-wrapper">
+        <div class="block-wrapper index-2">
             <div id="input-wrapper" class="responsive-columns-wrapper">
                 <label for="user-input" class="input-outline responsive-column">
                     <input id="user-input" type="text">
@@ -56,6 +53,9 @@
                 <video id="video">Video stream not available.</video>
                 <canvas id="canvas"></canvas>
                 <div id="pic-response"></div>
+            </div>
+            <div id="instructions" class="block-wrapper">
+                <p>Put on the headset and say, hello magic mirror!</p>
             </div>
             <div id="output-audio" class="audio-on" onclick="TTSModule.toggle()" value="ON"></div>
             <div id="mirror-message" class="responsive-columns-wrapper"></div>

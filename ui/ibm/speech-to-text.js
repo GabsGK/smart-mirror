@@ -93,9 +93,7 @@ var STTModule = (function() {
             Matsi.noRing();
             mic.setAttribute('class', 'inactive-mic'); // Reset our microphone button to visually indicate we aren't listening to user anymore
             /* Api.setWatsonPayload({output: {text: ['Howdy'],ref: 'STT'}}); */
-            CameraModule.hideCamera();
-            ImageModule.takepicture(false);
-            //Api.postConversationMessage("What's the weather?");
+            Api.postConversationMessage("What's the weather?");
           });
       })
       .catch(function(error) { // Catch any other errors and log them

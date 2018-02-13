@@ -6,8 +6,7 @@ var CameraModule = (function(){
     return {
         showCamera: showCamera,
         hideCamera: hideCamera,
-        clearCameraText: clearCameraText/* ,
-        isUserThere: isUserThere */
+        clearCameraText
     }
 
     // Pending to build camera when user says "Yes"
@@ -24,7 +23,4 @@ var CameraModule = (function(){
         cameraText.innerHTML = '';
     }
 
-    /* function isUserThere(){
-        
-    } */
 })();
