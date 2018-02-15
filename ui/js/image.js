@@ -153,21 +153,30 @@ var ImageModule = (function () {
     }
 
     function isUserThere(response, print) {
-        console.log(response)
         var length = response.images[0].faces.length;
         if (length != 0) {
             if (print === true) {
-                console.log('hola')
                 var picResponse = document.getElementById('pic-response');
                 var div = document.createElement('div');
                 for (i = 0; i < length; i++) {
-                    var info = document.createElement('div'),
-                        gender = '',
-                        age = '',
-                        minAge = '',
-                        maxAge = '',
-                        str = '';
-                        
+                    //var info = document.createElement('div');
+                    var name = '';
+                    var business = '';
+                    var gender = '';
+                    var age = '';
+                    var minAge = '';
+                    var maxAge = '';
+                    var text = '';
+                    var classifiersText = '';
+                    
+                    console.log(response.images[0].classifiers.length != 0 && response.images[0].classifiers[0].classes[0])
+                    if(response.images[0].classifiers.length != 0 && response.images[0].classifiers[0].classes[0].class) {
+                        //console.log(response.images[0].classifiers.length != 0 && response.images[0].classifiers[0].classes[0].class)
+                        name = response.images[0].classifiers[0].classes[0].class;
+                        classifiersText = '<p>' + name + '</p>'
+                                        + '<p>' + business + '</p>';
+                        picResponse.innerHTML = classifiersText;
+                    }
                     if(response.images[0].faces[i].gender.score > 0.3) {
                         gender = response.images[0].faces[i].gender.gender;
                     } else {
@@ -178,13 +187,14 @@ var ImageModule = (function () {
                             minAge = response.images[0].faces[i].age.min + ' - ';
                         if (response.images[0].faces[i].age.max)
                             maxAge = response.images[0].faces[i].age.max;
-                        age = minAge + maxAge + ' years old.'
+                        age = minAge + maxAge + ' years.'
                     }      
-                    str = 'I spy a ' + gender + '. ' + age ;
-                    info.innerText = str.toUpperCase();
-                    div.appendChild(info);
+                    facesText = '<p>' + gender + '</p>'
+                              + '<p>' + age + '</p>';
+                    picResponse.innerHTML = picResponse.innerHTML + facesText;
+                    //div.appendChild(info);
                 }
-                picResponse.innerHTML = div.innerHTML;
+                //picResponse.innerHTML = div.innerHTML;
             } else if (print === false) {
                 Api.postConversationMessage('Do you like me?');
             }

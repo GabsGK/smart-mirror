@@ -7,7 +7,7 @@
 
 #bg-video, .bg-video {
     width: 100%; 
-    height: auto;
+    height: -webkit-fill-available;
     position: absolute;
     top: 0%;
     left: 0%;
@@ -23,7 +23,7 @@
 
 @media screen and (orientation: landscape) {
     #bg-video, .bg-video {
-        width: 70%; 
+        max-width: 70%; 
         left: 15%;
         right: 15%;
     }

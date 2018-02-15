@@ -20,6 +20,11 @@
     clear: both;
     z-index: 3;
 }
+#input-wrapper ::after{
+    float: none;
+    clear: both;
+    display: block;
+}
 
 #input-mic {
     /* display: inline-block; */
@@ -169,6 +174,5 @@ input#user-input:-moz-placeholder {
 #instructions {
     color: #ccc;
     text-align: center;
-    margin-top: 50%;
     z-index: 1;
 }

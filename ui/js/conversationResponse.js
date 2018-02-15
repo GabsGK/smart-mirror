@@ -88,7 +88,7 @@ var ConversationResponse = (function () {
               cont++;
               window.location.reload(true);
             }
-          },11500);
+          },13000);
           ImageModule.clearPicture();
           CameraModule.hideCamera();
           CameraModule.clearCameraText();
