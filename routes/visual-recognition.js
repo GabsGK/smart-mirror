@@ -20,7 +20,7 @@ module.exports = function initImage(app) {
   let parameters = {
     //classifier_ids: ["Participants","Face Detection"],
     classifier_ids: ["Face Detection", "Participants_1283125451"],
-    threshold: 1.0
+    threshold: 0.6
   };
 
   //Show page to capture a image from the webcam
